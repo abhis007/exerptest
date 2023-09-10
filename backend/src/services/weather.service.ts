@@ -1,4 +1,4 @@
-
+import axios from 'axios'
 export interface ForecastModel {
     latitude: number,
     longitude: number,
@@ -15,20 +15,28 @@ export interface ForecastModel {
 
 export async function getWeatherForecast(lat: number, lng: number): Promise<ForecastModel> {
 
-    // TODO: make a call to this API with latitude and longitude from the frontend
-    // use axios to make the call
-    //  https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true
+ 
+    const apiUrl = 'https://api.open-meteo.com/v1/forecast'
 
+    const response = await axios.get(apiUrl, {
+        params: {
+            latitude :lat,
+            longitude :lng,
+            current_weather: true,
+        },
+        });
+     
+  
     return {
-        latitude: 52.52,
-        longitude: 13.41,
-        elevation: 0,
+        latitude: response.data.latitude,
+        longitude:response.data.longitude,
+        elevation: response.data.elevation,
         current_weather: {
-            temperature: 10,
-            windspeed: 10,
-            winddirection: 10,
-            weathercode: 10,
-            time: new Date()
+            temperature: response.data.current_weather.temperature,
+            windspeed: response.data.current_weather.windspeed,
+            winddirection: response.data.current_weather.winddirection,
+            weathercode:response.data.current_weather.weathercode,
+            time:response.data.current_weather.time,
         }
     };
 }
