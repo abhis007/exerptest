@@ -5,6 +5,8 @@ import store from './store'
 import VueGoogleMaps from '@fawmi/vue-google-maps';
 import WeatherService from './services/weather-service.service';
 import { setupAxiosInterceptors } from './shared/axios-interceptor';
+import '../styles/tailwind.css'
+
 
 setupAxiosInterceptors(() => {
     console.log('Unauthenticated');
