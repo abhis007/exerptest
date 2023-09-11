@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <SearchCity />
-    <WeatherForecast />
+    <SearchCity @location-updated="updateLocation" />
+    <WeatherForecast :latitude="latitude" :longitude="longitude"/>
   </div>
 </template>
 

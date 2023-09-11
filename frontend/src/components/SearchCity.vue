@@ -12,6 +12,7 @@
       :zoom="7"
       map-type-id="roadmap"
       ref="gmap"
+      @click="handleMapClick"
     >
     </GMapMap>
   </div>
@@ -20,7 +21,7 @@
 <script lang="ts" src="./search-city.component.ts"></script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 .gmap-class {
   height: 500px;
   width: 100%;
@@ -71,7 +72,7 @@ a {
 @tailwind components;
 @layer components {
   .pac-target-input {
-    @apply w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-primary-100 focus:border-primary-300;
+    @apply w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-primary-100;
   }
 }
 </style>
